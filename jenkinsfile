@@ -1,0 +1,25 @@
+pipeline:
+  agent:
+    any
+
+  stages:
+    - stage:
+        name: 'Checkout'
+        steps:
+          - checkout scm
+
+    - stage:
+        name: 'Build Docker Image'
+        steps:
+          - script:
+              script: |
+                def dockerImage = docker.build('my-web-image:latest')
+
+    - stage:
+        name: 'Push to Docker Hub'
+        steps:
+          - script:
+              script: |
+                docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials') {
+                  dockerImage.push()
+                }
