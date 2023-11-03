@@ -34,4 +34,4 @@ jobs:
       run: |
         # Your deployment commands go here
         # Example: docker push to a container registry
-        docker push your-container-registry.azurecr.io/my-docker-image:latest
+        docker push your-container-registry.azurecr.io/my-web-image:latest
